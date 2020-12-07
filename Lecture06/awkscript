@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#list IDs for HSP
+#grep -v "#" blastoutput2.out | cut -f2 | more
+
+#List alignment length and percent ID
+#grep -v "#" blastoutput2.out | cut -f3,4 | more
+
+#Show the HSPs with more than 20 mismatches
+#grep -v "#" blastoutput2.out | awk '($5 > 20)' | more
+
+#HSPs showter than 100 aas (field 4) and more than 20 mismatches
+#grep -v "#" blastoutput2.out | awk '($5 > 20 && $4 <100)' | more
+
+#HSPs with less than 20 mismatches but only the 20 first ones
+#awk '($1 !="#" && $5 < 20)' blastoutput2.out | head -n20
+
+#HSPs shorter than 100 amino acids
+#awk '($1 !="#" && $4 < 100)' blastoutput2.out | wc -l 
+
+#Top 10 highest HSPs
+#bit score in field 12
+#grep -v "#" blastoutput2.out | head
+
+#Start positions of all matches that include "AEI" in the HSP name
+#query start is field 7. Subject ID is field 2
+grep -v "#" blastoutput2.out | cut -f2,7 | grep "AEI" | cut -f2
